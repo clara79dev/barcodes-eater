@@ -1,15 +1,54 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Hello Vue 3 in CodeSandbox!" />
+  <h1>Barcodes Eater</h1>
+  <img alt="Barcode logo" src="./assets/logo.jpg" />
+  <BarcodeCategories
+    :categories="barcodeCategories"
+    @category-selected="onCategorySelected"
+  ></BarcodeCategories>
 </template>
 
 <script>
-import HelloWorldVue from "./components/HelloWorld.vue";
+import BarcodeCategories from "./components/BarcodeCategories";
+
 export default {
   name: "App",
   components: {
-    HelloWorld: HelloWorldVue,
+    BarcodeCategories: BarcodeCategories
   },
+  data() {
+    return {
+      barcodes: [
+        {
+          category: "Eurospin",
+          code: "1234567890",
+          reductionStatus: "UNUSED"
+        },
+        {
+          category: "Conad",
+          code: "0987654321",
+          reductionStatus: "PARTIALLY_USED"
+        },
+        {
+          category: "Eurospin",
+          code: "1029384756",
+          reductionStatus: "TOTALLY_USED"
+        }
+      ]
+    };
+  },
+  computed: {
+    barcodeCategories() {
+      const barcodeCategories = this.barcodes.map(bc => bc.category);
+      const barcodeCategoriesSet = new Set(barcodeCategories);
+      const uniqueBarcodeCategories = Array.from(barcodeCategoriesSet);
+      return uniqueBarcodeCategories;
+    }
+  },
+  methods: {
+    onCategorySelected(category) {
+      console.log(category);
+    }
+  }
 };
 </script>
 
