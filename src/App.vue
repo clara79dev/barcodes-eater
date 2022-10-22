@@ -2,21 +2,34 @@
   <h1>Barcodes Eater</h1>
   <img alt="Barcode logo" src="./assets/logo.jpg" />
   <BarcodeCategories
+    v-if="currentView == 'BarcodeCategories' && barcodes"
     :categories="barcodeCategories"
     @category-selected="onCategorySelected"
   ></BarcodeCategories>
+  <BarcodeList
+    v-if="currentView == 'BarcodeList' && currentCategory"
+    :category="currentCategory"
+    :barcodes="currentBarcodes"
+    @close-request="onBarcodeListCloseRequest"
+  ></BarcodeList>
 </template>
 
 <script>
 import BarcodeCategories from "./components/BarcodeCategories";
+import BarcodeList from "./components/BarcodeList";
 
 export default {
   name: "App",
   components: {
-    BarcodeCategories: BarcodeCategories
+    BarcodeCategories,
+    BarcodeList
   },
   data() {
     return {
+      views: ["BarcodeCategories", "BarcodeList"],
+      currentView: "BarcodeCategories",
+      currentCategory: "",
+      currentBarcodes: [],
       barcodes: [
         {
           category: "Eurospin",
@@ -46,7 +59,16 @@ export default {
   },
   methods: {
     onCategorySelected(category) {
-      console.log(category);
+      this.currentCategory = category;
+      this.currentBarcodes = this.barcodes.filter(
+        bc => bc.category == category
+      );
+      this.currentView = "BarcodeList";
+    },
+    onBarcodeListCloseRequest() {
+      this.currentCategory = "";
+      this.currentBarcodes = [];
+      this.currentView = "BarcodeCategories";
     }
   }
 };
