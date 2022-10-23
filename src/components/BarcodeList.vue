@@ -5,7 +5,7 @@ export default {
     category: String,
     barcodes: Array
   },
-  emits: ["close-request"]
+  emits: ["close-request", "view-request"]
 };
 </script>
 
@@ -13,6 +13,9 @@ export default {
   <div>
     <a href="#" @click.prevent="$emit('close-request')">
       &lt;- Torna alle categorie
+    </a>
+    <a href="#" @click.prevent="$emit('view-request', 'Carousel')">
+      Scorrimento -&gt;
     </a>
     <h2>{{ category }} Barcodes</h2>
     <ul v-if="barcodes.length">

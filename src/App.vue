@@ -10,19 +10,29 @@
     v-if="currentView == 'BarcodeList' && currentCategory"
     :category="currentCategory"
     :barcodes="currentBarcodes"
-    @close-request="onBarcodeListCloseRequest"
+    @close-request="onBarcodeViewCloseRequest"
+    @view-request="onBarcodeViewRequest($event)"
   ></BarcodeList>
+  <BarcodeCarousel
+    v-if="currentView == 'BarcodeCarousel' && currentCategory"
+    :category="currentCategory"
+    :barcodes="currentBarcodes"
+    @close-request="onBarcodeViewCloseRequest"
+    @view-request="onBarcodeViewRequest($event)"
+  ></BarcodeCarousel>
 </template>
 
 <script>
 import BarcodeCategories from "./components/BarcodeCategories";
 import BarcodeList from "./components/BarcodeList";
+import BarcodeCarousel from "./components/BarcodeCarousel";
 
 export default {
   name: "App",
   components: {
     BarcodeCategories,
-    BarcodeList
+    BarcodeList,
+    BarcodeCarousel
   },
   data() {
     return {
@@ -65,10 +75,14 @@ export default {
       );
       this.currentView = "BarcodeList";
     },
-    onBarcodeListCloseRequest() {
+    onBarcodeViewCloseRequest() {
       this.currentCategory = "";
       this.currentBarcodes = [];
       this.currentView = "BarcodeCategories";
+    },
+    onBarcodeViewRequest(viewType) {
+      console.log(viewType);
+      this.currentView = "Barcode" + viewType;
     }
   }
 };
