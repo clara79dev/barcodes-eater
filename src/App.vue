@@ -1,6 +1,9 @@
 <template>
-  <h1>Barcodes Eater</h1>
-  <img alt="Barcode logo" src="./assets/logo.jpg" />
+  <div class="header">
+    <img alt="Barcode logo" src="./assets/logo.png" />
+    <h1>Barcodes Eater</h1>
+  </div>
+
   <BarcodeCategories
     v-if="currentView == 'BarcodeCategories' && barcodes"
     :categories="barcodeCategories"
@@ -96,5 +99,11 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 </style>

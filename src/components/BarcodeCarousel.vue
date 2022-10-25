@@ -25,12 +25,6 @@ export default {
       Lista -&gt;
     </a>
     <h2>{{ category }} Barcodes</h2>
-    <!--carousel>
-      <slide v-for="barcode in barcodes" :key="barcode.code">
-        <p>{{ barcode.code }}</p>
-        <p>{{ barcode.reductionStatus }}</p>
-      </slide>
-    </carousel-->
     <carousel class="story-carousel story-carousel--colors">
       <slide
         v-for="barcode in barcodes"
@@ -38,7 +32,10 @@ export default {
         class="story-carousel__slide"
       >
         <div class="stacked-container">
-          <p class="stacked-item">{{ barcode.code }}</p>
+          <vue-barcode
+            :value="barcode.code"
+            :options="{ text: barcode.code, displayValue: true }"
+          ></vue-barcode>
           <p class="stacked-item">{{ barcode.reductionStatus }}</p>
         </div>
       </slide>

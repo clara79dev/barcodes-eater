@@ -861,6 +861,11 @@
     "lodash" "^4.17.19"
     "to-fast-properties" "^2.0.0"
 
+"@chenfengyuan/vue-barcode@^2.0.1":
+  "integrity" "sha512-YTSV1o0vOIRDZMiZZ9t09zkc9VZXN8CG8rriJUZUMtrvdg4Xt/qOOuzRlZEyRD7hsSYjbQy/3RcByGn1WOb1EA=="
+  "resolved" "https://registry.npmjs.org/@chenfengyuan/vue-barcode/-/vue-barcode-2.0.1.tgz"
+  "version" "2.0.1"
+
 "@hapi/address@2.x.x":
   "integrity" "sha512-QD1PhQk+s31P1ixsX0H0Suoupp3VMXzIVMSwobR3F3MSUO2YCV0B7xqLcUw/Bh8yuvd3LhpyqLQWTNcRmp6IdQ=="
   "resolved" "https://registry.npmjs.org/@hapi/address/-/address-2.1.4.tgz"
@@ -5075,6 +5080,11 @@
   dependencies:
     "argparse" "^1.0.7"
     "esprima" "^4.0.0"
+
+"jsbarcode@^3.11.0", "jsbarcode@^3.11.5":
+  "integrity" "sha512-zv3KsH51zD00I/LrFzFSM6dst7rDn0vIMzaiZFL7qusTjPZiPtxg3zxetp0RR7obmjTw4f6NyGgbdkBCgZUIrA=="
+  "resolved" "https://registry.npmjs.org/jsbarcode/-/jsbarcode-3.11.5.tgz"
+  "version" "3.11.5"
 
 "jsbn@~0.1.0":
   "integrity" "sha1-peZUwuWi3rXyAdls77yoDA7y9RM="
