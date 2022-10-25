@@ -19,7 +19,7 @@
   <BarcodeCarousel
     v-if="currentView == 'BarcodeCarousel' && currentCategory"
     :category="currentCategory"
-    :barcodes="currentBarcodes"
+    :barcodes="availableBarcodes"
     @close-request="onBarcodeViewCloseRequest"
     @view-request="onBarcodeViewRequest($event)"
   ></BarcodeCarousel>
@@ -58,6 +58,11 @@ export default {
           category: "Eurospin",
           code: "1029384756",
           reductionStatus: "TOTALLY_USED"
+        },
+        {
+          category: "Eurospin",
+          code: "83258734653",
+          reductionStatus: "PARTIALLY_USED"
         }
       ]
     };
@@ -68,6 +73,11 @@ export default {
       const barcodeCategoriesSet = new Set(barcodeCategories);
       const uniqueBarcodeCategories = Array.from(barcodeCategoriesSet);
       return uniqueBarcodeCategories;
+    },
+    availableBarcodes() {
+      return this.currentBarcodes.filter(
+        bc => bc.reductionStatus != "TOTALLY_USED"
+      );
     }
   },
   methods: {
