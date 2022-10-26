@@ -1,11 +1,7 @@
 <script>
-import { StreamBarcodeReader } from "vue-barcode-reader";
-
 export default {
   name: "BarcodeList",
-  components: {
-    StreamBarcodeReader
-  },
+  components: {},
   data() {
     return {
       scanning: false
@@ -40,10 +36,6 @@ export default {
       <button @click.prevent="scanning = true">+</button>
     </div>
     <div v-if="scanning == true">
-      <StreamBarcodeReader
-        @decode="$emit('new-barcode', $event)"
-        @loaded="onLoaded"
-      ></StreamBarcodeReader>
       <button @click.prevent="scanning = false">X</button>
     </div>
     <ul v-if="barcodes.length">

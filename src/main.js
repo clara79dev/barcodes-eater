@@ -1,9 +1,9 @@
 import { createApp } from "vue";
 import App from "./App.vue";
-import VueBarcode from "@chenfengyuan/vue-barcode";
+import VueBarcodeScanner from "vue-barcode-scanner";
 
 const app = createApp(App);
 
-app.component(VueBarcode.name, VueBarcode);
+app.use(VueBarcodeScanner);
 
 app.mount("#app");
