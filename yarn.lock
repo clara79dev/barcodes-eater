@@ -1760,6 +1760,7 @@
   "integrity" "sha512-9VGjrMsG1vePxcSweQsN20KY/c4zN0h9fLjqAbwbPfahM3t+NL+M9HC8xeXG2I8pX5NoamTGNuomEUFI7fcUjA=="
   "resolved" "https://registry.npmjs.org/ansi-styles/-/ansi-styles-4.2.1.tgz"
   "version" "4.2.1"
+
   dependencies:
     "@types/color-name" "^1.1.1"
     "color-convert" "^2.0.1"
