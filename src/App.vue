@@ -1,6 +1,9 @@
 <template>
-  <h1>Barcodes Eater</h1>
-  <img alt="Barcode logo" src="./assets/logo.jpg" />
+  <div class="header">
+    <img alt="Barcode logo" src="./assets/logo.png" />
+    <h1>Barcodes Eater</h1>
+  </div>
+
   <BarcodeCategories
     v-if="currentView == 'BarcodeCategories' && barcodes"
     :categories="barcodeCategories"
@@ -16,7 +19,7 @@
   <BarcodeCarousel
     v-if="currentView == 'BarcodeCarousel' && currentCategory"
     :category="currentCategory"
-    :barcodes="currentBarcodes"
+    :barcodes="availableBarcodes"
     @close-request="onBarcodeViewCloseRequest"
     @view-request="onBarcodeViewRequest($event)"
   ></BarcodeCarousel>
@@ -55,6 +58,11 @@ export default {
           category: "Eurospin",
           code: "1029384756",
           reductionStatus: "TOTALLY_USED"
+        },
+        {
+          category: "Eurospin",
+          code: "83258734653",
+          reductionStatus: "PARTIALLY_USED"
         }
       ]
     };
@@ -65,6 +73,11 @@ export default {
       const barcodeCategoriesSet = new Set(barcodeCategories);
       const uniqueBarcodeCategories = Array.from(barcodeCategoriesSet);
       return uniqueBarcodeCategories;
+    },
+    availableBarcodes() {
+      return this.currentBarcodes.filter(
+        bc => bc.reductionStatus != "TOTALLY_USED"
+      );
     }
   },
   methods: {
@@ -96,5 +109,11 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 </style>
